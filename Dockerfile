@@ -10,7 +10,9 @@ RUN apk -v update && \
    echo "user:x:1001:1001::/home/user:/bin/sh" >> /etc/passwd && \
    echo "user:x:1001:" >> /etc/group && \
    mkdir -p /home/user && \
-   chown user:user /home/user
+   chown user:user /home/user && \
+   cd /usr/lib/python2.7/site-packages/subliminal/providers && \
+   sed -i "s#\['permissive'\]#\"html5lib\"#" *.py
 
 USER user
 
